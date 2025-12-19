@@ -1,13 +1,13 @@
 {
     "id": 1000,
-    "name": "DESSAPEARANCE",
+    "name": "DESSERTED",
     "author": "moridhagoat",
     "creators": ["moridhagoat"],
     "verifier": "moridhagoat",
     "verification": "",
-    "percentToQualify": "56",
+    "percentToQualify": "35",
     "password": "Free To Copy",
-    "currentstate": "Verified",
+    "currentstate": "IMPOSSIBLE",
     "records": [
     ]
 }
