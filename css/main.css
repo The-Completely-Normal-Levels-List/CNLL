@@ -1,96 +1,85 @@
 :root {
-    --color-background: white;
-    --color-on-background: black;
-    --color-background-hover: #eee;
-    --color-on-background-hover: black;
+    /* Updated to match the "Impossible Levels List" dark theme */
+    --color-background: #0b0b0b;
+    --color-surface: #121212; /* Color for the level cards */
+    --color-on-background: #ffffff;
     --color-primary: #6F077D;
-    --color-on-primary: white;
-    --color-error: #de0000;
-    --color-on-error: white;
-}
-
-main.dark,
-header.dark {
-    color-scheme: dark;
-    --color-background: #1c1b1f;
-    --color-on-background: white;
-    --color-background-hover: #27262c;
-    --color-on-background-hover: white;
-    --color-primary: #6F077D;
-    --color-primary-disabled: #1f213c;
-    --color-on-primary: white;
-    --color-error: #de0000;
-    --color-on-error: white;
-}
-
-html,
-body {
-    height: 100%;
+    --color-accent: #2e2e2e;
+    --border-radius: 12px;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-}
-
-header,
-main {
     background-color: var(--color-background);
     color: var(--color-on-background);
-    display: grid;
-    grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(
-            16em,
-            1fr
-        );
-    column-gap: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Header style matching the top nav of the image */
 header {
-    display: flex;
-    padding-inline: calc(25vw - 10rem);
-    height: 4rem;
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-}
-@media screen and (min-width: 1366px) {
-    header {
-        display: grid;
-        padding-inline: 0;
-    }
-}
-header .logo {
-    justify-self: end;
-    align-self: center;
-    display: flex;
-    align-items: flex-end;
-    gap: 1rem;
-}
-header .nav {
-    flex: 1;
-}
-
-main {
-    height: 0;
-    flex: 1;
-    display: grid;
-    grid-template-rows: minmax(0, 1fr);
-    column-gap: 2rem;
-}
-main > div {
-    overflow-y: auto;
-}
-
-.spinner {
+    background-color: #000000;
+    height: 60px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    grid-column: span 3;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--color-accent);
+    gap: 20px;
 }
 
-input[type="checkbox"] {
-    height: 1.25rem;
-    width: 1.25rem;
-    cursor: pointer;
+/* Main Container - Centered and constrained like the image */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* The "Level Card" - Matching the landscape items in your image */
+.level-card {
+    background-color: var(--color-surface);
+    border: 1px solid #333;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+    height: 180px; /* Specific landscape height */
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.level-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(111, 7, 125, 0.3);
+}
+
+/* Left side landscape thumbnail */
+.level-thumb {
+    width: 35%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Right side info area */
+.level-info {
+    flex: 1;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.level-title {
+    font-size: 1.5rem;
+    font-weight: bold;
     margin: 0;
+}
+
+.level-stats {
+    text-align: right;
+    font-family: monospace;
+    color: #bbb;
 }
