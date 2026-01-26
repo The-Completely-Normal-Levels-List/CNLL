@@ -1,90 +1,96 @@
 :root {
-    --bg-color: #080808;
-    --card-bg: #121212;
-    --card-border: #252525;
-    --accent: #7c3aed;
-    --text-primary: #ffffff;
-    --text-secondary: #9ca3af;
+    --color-background: white;
+    --color-on-background: black;
+    --color-background-hover: #eee;
+    --color-on-background-hover: black;
+    --color-primary: #6F077D;
+    --color-on-primary: white;
+    --color-error: #de0000;
+    --color-on-error: white;
 }
 
-/* 1. Reset and Center the Body */
+main.dark,
+header.dark {
+    color-scheme: dark;
+    --color-background: #1c1b1f;
+    --color-on-background: white;
+    --color-background-hover: #27262c;
+    --color-on-background-hover: white;
+    --color-primary: #6F077D;
+    --color-primary-disabled: #1f213c;
+    --color-on-primary: white;
+    --color-error: #de0000;
+    --color-on-error: white;
+}
+
+html,
 body {
-    background-color: var(--bg-color);
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers everything horizontally */
-    min-height: 100vh;
-    font-family: 'Inter', system-ui, sans-serif;
+    height: 100%;
 }
 
-/* 2. Fix the Main Container */
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+header,
 main {
-    width: 100%;
-    max-width: 1100px; /* Limits width so it doesn't stretch too far */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers cards within the main tag */
-    gap: 24px;
-    padding: 40px 20px;
-    box-sizing: border-box;
-}
-
-/* 3. The Card Layout */
-.level-card {
-    width: 100%; /* Spans the width of the max-width container */
+    background-color: var(--color-background);
+    color: var(--color-on-background);
     display: grid;
-    grid-template-columns: 380px 1fr; /* Image on left, content on right */
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 18px;
-    overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(
+            16em,
+            1fr
+        );
+    column-gap: 2rem;
 }
 
-.level-card:hover {
-    transform: scale(1.01);
-    border-color: var(--accent);
-}
-
-/* 4. Internal Content Alignment */
-.level-thumb {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-}
-
-.level-content {
-    padding: 24px 32px;
+header {
     display: flex;
-    justify-content: space-between; /* Pushes Title to left, Stats to right */
-    align-items: center; /* Vertically centers the text content */
+    padding-inline: calc(25vw - 10rem);
+    height: 4rem;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
 }
-
-/* Left side of the card */
-.level-main-info {
+@media screen and (min-width: 1366px) {
+    header {
+        display: grid;
+        padding-inline: 0;
+    }
+}
+header .logo {
+    justify-self: end;
+    align-self: center;
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    align-items: flex-end;
+    gap: 1rem;
+}
+header .nav {
+    flex: 1;
 }
 
-.level-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--text-primary);
+main {
+    height: 0;
+    flex: 1;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    column-gap: 2rem;
+}
+main > div {
+    overflow-y: auto;
+}
+
+.spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 3;
+}
+
+input[type="checkbox"] {
+    height: 1.25rem;
+    width: 1.25rem;
+    cursor: pointer;
     margin: 0;
-}
-
-/* Right side of the card */
-.level-stats {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.fps-text {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #fff;
 }
