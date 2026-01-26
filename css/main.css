@@ -1,125 +1,90 @@
 :root {
-    /* Deep Slate/Black palette from the source image */
-    --bg-color: #050505;
-    --card-bg: #111111;
-    --card-border: #222222;
-    --accent-purple: #8b5cf6;
-    --accent-blue: #3b82f6;
-    --text-main: #ffffff;
-    --text-dim: #94a3b8;
-    --glow: rgba(139, 92, 246, 0.15);
+    --bg-color: #080808;
+    --card-bg: #121212;
+    --card-border: #252525;
+    --accent: #7c3aed;
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
 }
 
+/* 1. Reset and Center the Body */
 body {
     background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     margin: 0;
-    line-height: 1.5;
-}
-
-/* Container for the list */
-main {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center; /* Centers everything horizontally */
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* High-End Level Card */
+/* 2. Fix the Main Container */
+main {
+    width: 100%;
+    max-width: 1100px; /* Limits width so it doesn't stretch too far */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers cards within the main tag */
+    gap: 24px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+/* 3. The Card Layout */
 .level-card {
+    width: 100%; /* Spans the width of the max-width container */
     display: grid;
-    grid-template-columns: 320px 1fr; /* Exact landscape proportion */
+    grid-template-columns: 380px 1fr; /* Image on left, content on right */
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
+    border-radius: 18px;
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .level-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-purple);
-    box-shadow: 0 12px 24px -10px black, 0 0 20px var(--glow);
+    transform: scale(1.01);
+    border-color: var(--accent);
 }
 
-/* Thumbnail Area */
+/* 4. Internal Content Alignment */
 .level-thumb {
-    height: 180px;
+    height: 200px;
     background-size: cover;
     background-position: center;
-    border-right: 1px solid var(--card-border);
-    position: relative;
 }
 
-/* Dark overlay on thumb for text readability */
-.level-thumb::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, transparent, rgba(0,0,0,0.4));
-}
-
-/* Content Area */
 .level-content {
-    padding: 24px;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between; /* Pushes Title to left, Stats to right */
+    align-items: center; /* Vertically centers the text content */
+}
+
+/* Left side of the card */
+.level-main-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.level-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    gap: 8px;
 }
 
 .level-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 800;
-    letter-spacing: -0.025em;
+    color: var(--text-primary);
     margin: 0;
 }
 
-.level-author {
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    margin-top: 4px;
-}
-
-/* Badges (FPS, Length, etc.) */
-.badge-container {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-}
-
-.badge {
-    background: #1e1e1e;
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--accent-blue);
-    border: 1px solid #333;
-}
-
-.stats-right {
+/* Right side of the card */
+.level-stats {
     text-align: right;
-    font-family: 'JetBrains Mono', monospace; /* Professional tech look */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.stats-fps {
-    font-size: 1.2rem;
-    font-weight: bold;
+.fps-text {
+    font-size: 1.4rem;
+    font-weight: 700;
     color: #fff;
-}
-
-.stats-points {
-    color: #10b981; /* Green for points */
-    font-size: 0.85rem;
 }
