@@ -1,85 +1,125 @@
 :root {
-    /* Updated to match the "Impossible Levels List" dark theme */
-    --color-background: #0b0b0b;
-    --color-surface: #121212; /* Color for the level cards */
-    --color-on-background: #ffffff;
-    --color-primary: #6F077D;
-    --color-accent: #2e2e2e;
-    --border-radius: 12px;
+    /* Deep Slate/Black palette from the source image */
+    --bg-color: #050505;
+    --card-bg: #111111;
+    --card-border: #222222;
+    --accent-purple: #8b5cf6;
+    --accent-blue: #3b82f6;
+    --text-main: #ffffff;
+    --text-dim: #94a3b8;
+    --glow: rgba(139, 92, 246, 0.15);
 }
 
 body {
-    background-color: var(--color-background);
-    color: var(--color-on-background);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     margin: 0;
-    display: flex;
-    flex-direction: column;
+    line-height: 1.5;
 }
 
-/* Header style matching the top nav of the image */
-header {
-    background-color: #000000;
-    height: 60px;
+/* Container for the list */
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
     display: flex;
-    align-items: center;
-    padding: 0 2rem;
-    border-bottom: 1px solid var(--color-accent);
+    flex-direction: column;
     gap: 20px;
 }
 
-/* Main Container - Centered and constrained like the image */
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-/* The "Level Card" - Matching the landscape items in your image */
+/* High-End Level Card */
 .level-card {
-    background-color: var(--color-surface);
-    border: 1px solid #333;
-    border-radius: 20px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 320px 1fr; /* Exact landscape proportion */
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
     overflow: hidden;
-    height: 180px; /* Specific landscape height */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    transition: transform 0.2s;
+    cursor: pointer;
 }
 
 .level-card:hover {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 15px rgba(111, 7, 125, 0.3);
+    transform: translateY(-4px);
+    border-color: var(--accent-purple);
+    box-shadow: 0 12px 24px -10px black, 0 0 20px var(--glow);
 }
 
-/* Left side landscape thumbnail */
+/* Thumbnail Area */
 .level-thumb {
-    width: 35%;
+    height: 180px;
     background-size: cover;
     background-position: center;
+    border-right: 1px solid var(--card-border);
     position: relative;
 }
 
-/* Right side info area */
-.level-info {
-    flex: 1;
-    padding: 1.5rem;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+/* Dark overlay on thumb for text readability */
+.level-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.4));
+}
+
+/* Content Area */
+.level-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.level-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .level-title {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 800;
+    letter-spacing: -0.025em;
     margin: 0;
 }
 
-.level-stats {
+.level-author {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* Badges (FPS, Length, etc.) */
+.badge-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.badge {
+    background: #1e1e1e;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    border: 1px solid #333;
+}
+
+.stats-right {
     text-align: right;
-    font-family: monospace;
-    color: #bbb;
+    font-family: 'JetBrains Mono', monospace; /* Professional tech look */
+}
+
+.stats-fps {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.stats-points {
+    color: #10b981; /* Green for points */
+    font-size: 0.85rem;
 }
