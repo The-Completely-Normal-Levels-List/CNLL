@@ -3,8 +3,8 @@
     --color-on-background: black;
     --color-background-hover: #eee;
     --color-on-background-hover: black;
-    --color-primary: #04024c;
-    --color-on-primary: white;
+    --color-primary: #0904a7;
+    --color-on-primary: rgb(0, 8, 75);
     --color-error: #de0000;
     --color-on-error: white;
 }
