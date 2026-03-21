@@ -1,0 +1,19 @@
+{
+    "id": 136188759,
+    "name": "Azure Reminiscence",
+    "author": "moridhagoat",
+    "creators": ["moridhagoat"],
+    "verifier": "moridhagoat",
+    "verification": "",
+    "percentToQualify": "50",
+    "password": "Free To Copy",
+    "currentstate": "Verified",
+    "records": [
+        {  
+            "user": "test1",
+            "link": "",
+            "percent": 25,
+            "hz": 240
+        }
+    ]
+}
